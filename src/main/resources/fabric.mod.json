@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "wind-charged-weaponry",
+	"version": "0.1",
+	"name": "Wind Charged Weaponry",
+	"description": "Wind Charged Weaponry adds a plethora of wind and trial chambers themed weaponry to minecraft; particularly for use with other mods such as Enchancement in a multiplayer setting.\nNOTE: Wind Charged Weaponry was made for a specific server and thus may not work well in other environments.",
+	"authors": [
+		"Evan2Awesome"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/wind-charged-weaponry/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.wind_weaponry.WindChargedWeaponry"
+		],
+		"fabric-datagen": [
+			"net.wind_weaponry.WindChargedWeaponryDataGenerator"
+		],
+		"client": [
+			"net.wind_weaponry.WindChargedWeaponryClient"
+		]
+	},
+	"mixins": [
+		"wind-charged-weaponry.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.1",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
