@@ -2,6 +2,7 @@ package net.wind_weaponry.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.wind_weaponry.WindChargedWeaponry;
 import net.wind_weaponry.item.ModItems;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.RecipeProvider;
@@ -28,6 +29,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter recipeExporter) {
-
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WIND_LONGSWORD)
+                .pattern("  B")
+                .pattern("CB ")
+                .pattern("NC ")
+                .input('B', Items.BREEZE_ROD)
+                .input('C', Items.COPPER_INGOT)
+                .input('N', Items.NETHERITE_INGOT)
+                .criterion(hasItem(Items.NETHERITE_INGOT), conditionsFromItem(Items.NETHERITE_INGOT))
+                .offerTo(recipeExporter, Identifier.of(WindChargedWeaponry.MOD_ID, "wind_longsword"));
     }
 }
