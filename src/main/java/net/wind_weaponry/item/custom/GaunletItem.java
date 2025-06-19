@@ -1,46 +1,132 @@
 package net.wind_weaponry.item.custom;
 
-import net.minecraft.block.Blocks;
+import net.minecraft.component.type.ItemEnchantmentsComponent;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.decoration.EndCrystalEntity;
-import net.minecraft.entity.mob.CreeperEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.world.ServerWorld;
+import net.minecraft.item.ToolItem;
+import net.minecraft.item.ToolMaterial;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
-import software.bernie.geckolib.animatable.GeoItem;
+import net.minecraft.world.explosion.AdvancedExplosionBehavior;
+import net.wind_weaponry.enchantment.ModEnchantments;
 
-public class GaunletItem extends Item {
-    public static final int TICKS_PER_SECOND = 20;
+import java.util.Optional;
+import java.util.function.Function;
 
-    public GaunletItem(Item.Settings settings){
-        super(settings);
+public class GaunletItem extends ToolItem {
+    //public static final int TICKS_PER_SECOND = 20;
+    public float variant = 0;
+
+    public GaunletItem(ToolMaterial toolMaterial, Item.Settings settings){
+        super(toolMaterial, settings);
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
-        user.getItemCooldownManager().set(this, 15);
+        if (user.getStackInHand(hand).hasEnchantments())
+            variant = 1;
+        else{
+            variant = 0;
+        }
         user.setCurrentHand(hand);
         return TypedActionResult.consume(user.getStackInHand(hand));
     }
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
-        
+        PlayerEntity temp = (PlayerEntity) user;
+        if (variant == 0) temp.getItemCooldownManager().set(this, 30);
+        else {
+            temp.getItemCooldownManager().set(this, 60);
+        }
+
+        if (variant == 0){
+            if (remainingUseTicks <= 71980){
+                if (user.isSneaking())
+                    world.createExplosion(
+                            user,
+                            null,
+                            new AdvancedExplosionBehavior(true, false, Optional.of(2.5F), Registries.BLOCK.getEntryList(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity())),
+                            user.getX()+(user.getRotationVector().x*1),
+                            user.getStandingEyeHeight()+user.getY()+(user.getRotationVector().y*1),
+                            user.getZ()+(user.getRotationVector().z*1),
+                            1.2F,
+                            false,
+                            World.ExplosionSourceType.TRIGGER,
+                            ParticleTypes.GUST_EMITTER_SMALL,
+                            ParticleTypes.GUST_EMITTER_LARGE,
+                            SoundEvents.ENTITY_WIND_CHARGE_WIND_BURST);
+                else {
+                    world.createExplosion(
+                            null,
+                            null,
+                            new AdvancedExplosionBehavior(true, false, Optional.of(0.75F), Registries.BLOCK.getEntryList(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity())),
+                            user.getX() + (user.getRotationVector().x * 1),
+                            user.getStandingEyeHeight() + user.getY() + (user.getRotationVector().y * 1),
+                            user.getZ() + (user.getRotationVector().z * 1),
+                            1.2F,
+                            false,
+                            World.ExplosionSourceType.TRIGGER,
+                            ParticleTypes.GUST_EMITTER_SMALL,
+                            ParticleTypes.GUST_EMITTER_LARGE,
+                            SoundEvents.ENTITY_WIND_CHARGE_WIND_BURST);
+                    world.createExplosion(
+                            user,
+                            null,
+                            new AdvancedExplosionBehavior(true, false, Optional.of(2.5F), Registries.BLOCK.getEntryList(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity())),
+                            user.getX() + (user.getRotationVector().x * 1),
+                            user.getStandingEyeHeight() + user.getY() + (user.getRotationVector().y * 1),
+                            user.getZ() + (user.getRotationVector().z * 1),
+                            1.2F,
+                            false,
+                            World.ExplosionSourceType.TRIGGER,
+                            ParticleTypes.GUST_EMITTER_SMALL,
+                            ParticleTypes.GUST_EMITTER_LARGE,
+                            SoundEvents.ENTITY_WIND_CHARGE_WIND_BURST);
+                }
+            }
+        }else{
+            if (remainingUseTicks <= 71980){
+                world.createExplosion(
+                    null,
+                    null,
+                    new AdvancedExplosionBehavior(true, true, Optional.of(2F), Registries.BLOCK.getEntryList(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity())),
+                    user.getX() + (user.getRotationVector().x * 1),
+                    user.getStandingEyeHeight() + user.getY() + (user.getRotationVector().y * 1),
+                    user.getZ() + (user.getRotationVector().z * 1),
+                    1.7F,
+                    false,
+                    World.ExplosionSourceType.TRIGGER,
+                    ParticleTypes.GUST_EMITTER_SMALL,
+                    ParticleTypes.GUST_EMITTER_LARGE,
+                    SoundEvents.ENTITY_WIND_CHARGE_WIND_BURST);
+                world.createExplosion(
+                    user,
+                    null,
+                    new AdvancedExplosionBehavior(true, true, Optional.of(3F), Registries.BLOCK.getEntryList(BlockTags.BLOCKS_WIND_CHARGE_EXPLOSIONS).map(Function.identity())),
+                    user.getX() + (user.getRotationVector().x * 1),
+                    user.getStandingEyeHeight() + user.getY() + (user.getRotationVector().y * 1),
+                    user.getZ() + (user.getRotationVector().z * 1),
+                    1.2F,
+                    false,
+                    World.ExplosionSourceType.TRIGGER,
+                    ParticleTypes.GUST_EMITTER_SMALL,
+                    ParticleTypes.GUST_EMITTER_LARGE,
+                    SoundEvents.ENTITY_GENERIC_EXPLODE);
+            }
+        }
     }
 
     @Override
@@ -51,6 +137,17 @@ public class GaunletItem extends Item {
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         ((PlayerEntity) user).experienceLevel = remainingUseTicks;
+        if (remainingUseTicks == 71991) {
+            user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
+                    SoundEvents.BLOCK_COPPER_BULB_PLACE, SoundCategory.PLAYERS, 1.3f, 1.7f);
+            user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
+                    SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON, SoundCategory.PLAYERS, 1f, 1.2f);
+            user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
+                    SoundEvents.ENTITY_BREEZE_INHALE, SoundCategory.PLAYERS, 1f, 1.8f);
+        } else if (remainingUseTicks == 71981) {
+            user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
+                    SoundEvents.BLOCK_COPPER_TRAPDOOR_CLOSE, SoundCategory.PLAYERS, 0.9f, 1.5f);
+        }
     }
 
     @Override
@@ -58,8 +155,7 @@ public class GaunletItem extends Item {
         return 72000;
     }
 
-
-    /*
+    /* I stole the railgun code from another mod I worked on for reference (thanks Sawyer!)
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         user.getItemCooldownManager().set(this, 15); // firing cooldown (20 is an ender pearl for reference, 3 is just a test value)

@@ -38,5 +38,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('N', Items.NETHERITE_INGOT)
                 .criterion(hasItem(Items.NETHERITE_INGOT), conditionsFromItem(Items.NETHERITE_INGOT))
                 .offerTo(recipeExporter, Identifier.of(WindChargedWeaponry.MOD_ID, "wind_longsword"));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WIND_GAUNLET)
+                .pattern("LNW")
+                .pattern("LCW")
+                .pattern("LNW")
+                .input('W', Items.WIND_CHARGE)
+                .input('C', Items.COPPER_BLOCK)
+                .input('N', Items.NETHERITE_SCRAP)
+                .input('L', Items.LEATHER)
+                .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
+                .offerTo(recipeExporter, Identifier.of(WindChargedWeaponry.MOD_ID, "wind_gaunlet"));
+
     }
 }

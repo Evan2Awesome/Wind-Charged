@@ -16,7 +16,6 @@ public class ModGroup {
                     .entries((displayContext, entries) -> {
                         //add items here
                         //entries.add(ModItems.EXAMPLE);
-                        entries.add(ModItems.WIND_HAMMER);
                         entries.add(ModItems.WIND_LONGSWORD);
                         entries.add(ModItems.WIND_GAUNLET);
                     })

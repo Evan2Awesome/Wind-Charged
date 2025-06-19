@@ -29,7 +29,7 @@ public class ModItems {
                             Item.BASE_ATTACK_DAMAGE_MODIFIER_ID,4.5F,EntityAttributeModifier.Operation.ADD_VALUE
                     ),AttributeModifierSlot.MAINHAND)),true))));
 
-    public static final Item WIND_GAUNLET = registerItem("wind_gaunlet", new GaunletItem(new Item.Settings()
+    public static final Item WIND_GAUNLET = registerItem("wind_gaunlet", new GaunletItem(ModToolMaterials.WIND_CHARGED,new Item.Settings()
             .attributeModifiers(new AttributeModifiersComponent(List.of(
                     new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(
                             Item.BASE_ATTACK_DAMAGE_MODIFIER_ID,2,EntityAttributeModifier.Operation.ADD_VALUE
@@ -46,9 +46,7 @@ public class ModItems {
                     ),AttributeModifierSlot.MAINHAND),
                     new AttributeModifiersComponent.Entry(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE, new EntityAttributeModifier(
                             Identifier.of("2906341806710"),0.5F,EntityAttributeModifier.Operation.ADD_VALUE
-                    ),AttributeModifierSlot.MAINHAND)),true))
-
-    ));
+                    ),AttributeModifierSlot.MAINHAND)),true))));
 
 
     private static Item registerItem(String name, Item item){

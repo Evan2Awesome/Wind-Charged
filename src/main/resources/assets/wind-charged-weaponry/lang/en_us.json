@@ -3,8 +3,14 @@
 
   "item.wind-charged-weaponry.wind_hammer": "Heavy Hammer",
   "item.wind-charged-weaponry.wind_gaunlet": "Wind Gaunlet",
-  "item.wind-charged-weaponry.wind_longsword": "Wind Longsword",
+  "item.wind-charged-weaponry.wind_longsword": "Ceremonial Longsword",
 
   "tooltip.wind-charged-weaponry.longsword.shift_down" : "A faithful replica of a ceremonial weapon from a bygone era. Its blade is formed from sharpened breeze rods.",
-  "tooltip.wind-charged-weaponry.longsword" : "Press §e[Shift]§r for more information!"
+  "tooltip.wind-charged-weaponry.longsword" : "Press §e[Shift]§r for more information!",
+
+  "enchantment.wind-charged-weaponry.gust": "Gust",
+  "enchantment.wind-charged-weaponry.gust.desc": "Launches attacked mobs.",
+
+  "enchantment.wind-charged-weaponry.blast": "Blast",
+  "enchantment.wind-charged-weaponry.blast.desc": "For the truly insane. Replaces the safe, sensible burst of wind with a powerful explosion that launches further at the cost of being much more volatile."
 }

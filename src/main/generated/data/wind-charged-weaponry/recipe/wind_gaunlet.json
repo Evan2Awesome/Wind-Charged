@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_block"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "W": {
+      "item": "minecraft:wind_charge"
+    }
+  },
+  "pattern": [
+    "LNW",
+    "LCW",
+    "LNW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "wind-charged-weaponry:wind_gaunlet"
+  }
+}

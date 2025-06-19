@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:breeze_rod"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "pattern": [
+    "  B",
+    "CB ",
+    "NC "
+  ],
+  "result": {
+    "count": 1,
+    "id": "wind-charged-weaponry:wind_longsword"
+  }
+}
