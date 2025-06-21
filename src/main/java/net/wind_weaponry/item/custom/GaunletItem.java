@@ -136,7 +136,7 @@ public class GaunletItem extends ToolItem {
 
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-        ((PlayerEntity) user).experienceLevel = remainingUseTicks;
+        //((PlayerEntity) user).experienceLevel = remainingUseTicks;
         if (remainingUseTicks == 71991) {
             user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
                     SoundEvents.BLOCK_COPPER_BULB_PLACE, SoundCategory.PLAYERS, 1.3f, 1.7f);
