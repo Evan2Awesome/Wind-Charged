@@ -41,7 +41,7 @@ public class ModEnchantments {
                         new GustEnchantmentEffect()));
 
         register(registerable, BLAST_EFFECT, Enchantment.builder(Enchantment.definition(
-                        items.getOrThrow(ModTags.Items.GAUNLET_ENCHANTABLE),
+                        items.getOrThrow(ModTags.Items.GAUNTLET_ENCHANTABLE),
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                         3,
                         1,

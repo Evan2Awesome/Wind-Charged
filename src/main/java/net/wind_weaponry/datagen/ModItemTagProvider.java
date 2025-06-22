@@ -26,7 +26,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ModTags.Items.LONGSWORD_ENCHANTABLE)
                 .add(ModItems.WIND_LONGSWORD);
 
-        getOrCreateTagBuilder(ModTags.Items.GAUNLET_ENCHANTABLE)
-                .add(ModItems.WIND_GAUNLET);
+        getOrCreateTagBuilder(ModTags.Items.GAUNTLET_ENCHANTABLE)
+                .add(ModItems.WIND_GAUNTLET);
     }
 }

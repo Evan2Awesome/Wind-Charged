@@ -27,6 +27,6 @@
   "slots": [
     "hand"
   ],
-  "supported_items": "#wind-charged-weaponry:gaunlet_enchantable",
+  "supported_items": "#wind-charged-weaponry:gauntlet_enchantable",
   "weight": 3
 }
