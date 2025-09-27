@@ -1,13 +1,19 @@
 {
-	"required": true,
-	"package": "net.wind_weaponry.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin",
-		"ItemRendererMixin",
-		"ModelLoaderMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	}
+  "required": true,
+  "package": "net.wind_weaponry.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "ExampleMixin",
+    "ItemRendererMixin",
+    "LivingEntityMixin",
+    "ModelLoaderMixin",
+    "PlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "BipedEntityModelMixin",
+    "ItemRendererMixin"
+	]
 }

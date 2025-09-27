@@ -1,7 +1,10 @@
 package net.wind_weaponry.entity;
 
+import net.minecraft.client.render.RenderLayers;
+import net.minecraft.client.render.entity.BreezeEntityRenderer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.mob.BreezeEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
