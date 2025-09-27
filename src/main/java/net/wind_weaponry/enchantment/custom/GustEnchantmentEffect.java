@@ -14,14 +14,14 @@ public record GustEnchantmentEffect() implements EnchantmentEntityEffect {
     public static final MapCodec<GustEnchantmentEffect> CODEC = MapCodec.unit(GustEnchantmentEffect::new);
 
     @Override
-    public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
+    public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity target, Vec3d pos) {
         //PlayerEntity temp = (PlayerEntity) user;
-        System.out.println(user.getType());
-        if (user.getType() == EntityType.PLAYER) {
-            user.addVelocity(0, 0.75, 0);
+        System.out.println(target.getType());
+        if (target instanceof PlayerEntity) {
+            target.addVelocityInternal(new Vec3d(0f, 0.75, 0f));
             world.spawnParticles(ParticleTypes.GUST, pos.x, pos.y, pos.z, 1, 0.0, 0.0, 0.0, 0.0);
         }else{
-            user.addVelocity(0, 0.35, 0);
+            target.addVelocity(0, 0.35, 0);
             world.spawnParticles(ParticleTypes.GUST, pos.x, pos.y, pos.z, 1, 0.0, 0.0, 0.0, 0.0);
         }
         //user.addVelocity(0, 0.35, 0);

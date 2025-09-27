@@ -11,13 +11,14 @@ import net.minecraft.util.Identifier;
 
 public class ModGroup {
     public static final ItemGroup IKEA_ITEMS = Registry.register(Registries.ITEM_GROUP, Identifier.of(WindChargedWeaponry.MOD_ID, "wind_items"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.WIND_HAMMER))
+            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.WIND_GAUNTLET))
                     .displayName(Text.translatable("itemgroup.wind_weaponry.wind_items"))
                     .entries((displayContext, entries) -> {
                         //add items here
                         //entries.add(ModItems.EXAMPLE);
                         entries.add(ModItems.WIND_LONGSWORD);
                         entries.add(ModItems.WIND_GAUNTLET);
+                        entries.add(ModItems.NEEDLE);
                     })
                     .build());
 

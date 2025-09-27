@@ -18,5 +18,8 @@ public abstract class ModelLoaderMixin {
     @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/model/ModelLoader;loadItemModel(Lnet/minecraft/client/util/ModelIdentifier;)V", ordinal = 1))
     private void onInit(CallbackInfo ci) {
         this.loadItemModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_longsword_large")));
+        this.loadItemModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_longsword_sheathed")));
+        this.loadItemModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_gauntlet_3d")));
+        this.loadItemModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("needle_large")));
     }
 }

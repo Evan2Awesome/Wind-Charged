@@ -24,5 +24,7 @@ public class ModModelProvider extends FabricModelProvider {
         //itemModelGenerator.register(ModItems.EXAMPLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.WIND_HAMMER, Models.HANDHELD_MACE);
         itemModelGenerator.register(ModItems.WIND_LONGSWORD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WIND_GAUNTLET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.NEEDLE, Models.GENERATED);
     }
 }

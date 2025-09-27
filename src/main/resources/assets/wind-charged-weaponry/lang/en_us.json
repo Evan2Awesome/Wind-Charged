@@ -1,16 +1,24 @@
 {
-  "itemgroup.wind_weaponry.wind_items": "Wind Charged",
+  "itemgroup.wind_weaponry.wind_items": "Wind Charged Weaponry",
 
   "item.wind-charged-weaponry.wind_hammer": "Heavy Hammer",
   "item.wind-charged-weaponry.wind_gauntlet": "Wind Gauntlet",
   "item.wind-charged-weaponry.wind_longsword": "Ceremonial Longsword",
+  "item.wind-charged-weaponry.needle": "Needle",
 
   "tooltip.wind-charged-weaponry.longsword.shift_down" : "A faithful replica of a ceremonial weapon from a bygone era. Its blade is formed from sharpened breeze rods.",
-  "tooltip.wind-charged-weaponry.longsword" : "Press §e[Shift]§r for more information!",
+  "tooltip.wind-charged-weaponry.longsword.ctrl_down" : "§eRight Click§r to block. Deals less damage when holding an offhand item. Incompatible with a shield.",
+  "tooltip.wind-charged-weaponry.longsword.shift_up" : "Press §e[Shift]§r for more information!",
+  "tooltip.wind-charged-weaponry.longsword.ctrl_up" : "Press §e[Ctrl]§r for functionality!",
+  "tooltip.wind-charged-weaponry.needle.shift_down": "A slender, sharp weapon from a distant land. Gathers silk upon striking an enemy.",
+  "tooltip.wind-charged-weaponry.needle.ctrl_down": "When at full silk, hold §eRight Click§r to heal.",
 
   "enchantment.wind-charged-weaponry.gust": "Gust",
   "enchantment.wind-charged-weaponry.gust.desc": "Launches attacked mobs.",
 
   "enchantment.wind-charged-weaponry.blast": "Blast",
-  "enchantment.wind-charged-weaponry.blast.desc": "For the truly insane. Replaces the safe, sensible burst of wind with a powerful explosion that launches further at the cost of being much more volatile."
+  "enchantment.wind-charged-weaponry.blast.desc": "For the truly insane. Replaces the safe, sensible burst of wind with a powerful explosion that launches further at the cost of being much more volatile.",
+
+  "enchantment.wind-charged-weaponry.reaping": "Reaping",
+  "enchantment.wind-charged-weaponry.reaping.desc": "Increases damage and silk yield at the expense of speed."
 }

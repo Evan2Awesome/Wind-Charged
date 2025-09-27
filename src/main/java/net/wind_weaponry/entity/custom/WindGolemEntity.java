@@ -40,13 +40,13 @@ public class WindGolemEntity extends AnimalEntity implements GeoEntity {
         return false;
     }
 
-
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, "controller", 5, this::animController));
     }
 
     private <E extends WindGolemEntity> PlayState animController(final AnimationState<E> event) {
+        event.getController().setAnimation(RawAnimation.begin().then("wind", Animation.LoopType.LOOP));
         if(this.getHealth()<=0) {
             event.getController().setAnimation(RawAnimation.begin().then("die", Animation.LoopType.PLAY_ONCE));
         }

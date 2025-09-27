@@ -1,13 +1,13 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "wind-charged-weaponry:item/wind_gaunlet",
-		"particle": "wind-charged-weaponry:item/wind_gaunlet"
+		"0": "wind-charged-weaponry:item/wind_gauntlet_3d",
+		"particle": "wind-charged-weaponry:item/wind_gauntlet_3d"
 	},
 	"elements": [
 		{
-			"from": [5.65, 3.65, 7.65],
-			"to": [10.35, 8.35, 14.35],
+			"from": [5.45, 3.45, 7.45],
+			"to": [10.55, 8.55, 14.55],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, 6, 11]},
 			"faces": {
 				"north": {"uv": [0, 8, 4, 12], "texture": "#0"},

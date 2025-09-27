@@ -1,5 +1,7 @@
-// 1.21.1	2025-06-21T17:52:58.5787526	Wind Charged Weaponry/Recipes
+// 1.21.1	2025-09-26T17:03:12.6518099	Wind Charged Weaponry/Recipes
 e6996edba0beca5eeec0c9834523041502ec86d8 data\wind-charged-weaponry\advancement\recipes\misc\wind_gauntlet.json
+6962142d05285fdb05470a18ecdbdca64cd4e9ec data\wind-charged-weaponry\recipe\needle.json
 88bfc246d1f86e35d992931154d3d9c4e06a666b data\wind-charged-weaponry\recipe\wind_longsword.json
+02ba9727f1fd9c47c0fbade23ac1e49b0f3af202 data\wind-charged-weaponry\advancement\recipes\misc\needle.json
 39b2dd2b2033ebd0e3390eee43d53486436882fd data\wind-charged-weaponry\advancement\recipes\misc\wind_longsword.json
 ff6f61b450472f9d82b095e5ba4b2fd0e5f4e1d3 data\wind-charged-weaponry\recipe\wind_gauntlet.json

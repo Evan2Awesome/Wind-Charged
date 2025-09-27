@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.wind_golem",
+				"identifier": "geometry.unknown",
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 3,
@@ -58,17 +58,12 @@
 					]
 				},
 				{
-					"name": "main_head",
+					"name": "head",
 					"parent": "upper",
 					"pivot": [0, 17, 0],
 					"cubes": [
 						{"origin": [-3, 17, -3], "size": [6, 5, 6], "uv": [0, 16]}
 					]
-				},
-				{
-					"name": "head",
-					"parent": "main_head",
-					"pivot": [0, 0, 0]
 				},
 				{
 					"name": "wind",

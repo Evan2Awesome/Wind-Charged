@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "wind-charged-weaponry:item/wind_longsword_large"
+    "layer0": "wind-charged-weaponry:item/needle_large"
   },
   "gui_light": "front",
   "display": {
@@ -47,7 +47,7 @@
       ],
       "translation": [
         0,
-        9.5,
+        7,
         1.5
       ],
       "scale": [
@@ -98,7 +98,7 @@
       ],
       "translation": [
         0,
-        10,
+        7,
         1.5
       ],
       "scale": [

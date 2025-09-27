@@ -160,7 +160,7 @@
 						}
 					}
 				},
-				"head": {
+				"main_head": {
 					"rotation": {
 						"0.0": {
 							"vector": [0, 0, 0]
@@ -245,7 +245,7 @@
 			}
 		},
 		"wind": {
-			"loop": true,
+			"loop": false,
 			"animation_length": 1,
 			"bones": {
 				"wind": {
@@ -275,7 +275,7 @@
 			}
 		},
 		"idle": {
-			"loop": true,
+			"loop": false,
 			"animation_length": 1,
 			"bones": {
 				"main": {
@@ -328,7 +328,7 @@
 						}
 					}
 				},
-				"head": {
+				"main_head": {
 					"rotation": {
 						"0.0": {
 							"vector": [-2.5, 0, 0]
@@ -362,7 +362,7 @@
 			}
 		},
 		"walk": {
-			"loop": true,
+			"loop": false,
 			"animation_length": 1,
 			"bones": {
 				"right": {
@@ -390,6 +390,9 @@
 						"0.0": {
 							"vector": [0, 0, -2]
 						},
+						"0.1": {
+							"vector": [0, -0.75, -1.6]
+						},
 						"0.5": {
 							"vector": [0, 0, 0]
 						},
@@ -401,6 +404,24 @@
 						},
 						"1.0": {
 							"vector": [0, 0, -2]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [0.9, 1.1, 0.9]
+						},
+						"0.1": {
+							"vector": [1.1, 0.9, 1.1],
+							"easing": "easeOutBack"
+						},
+						"0.5": {
+							"vector": [1, 1, 1]
+						},
+						"0.9": {
+							"vector": [1, 1, 1]
+						},
+						"1.0": {
+							"vector": [0.9, 1.1, 0.9]
 						}
 					}
 				},
@@ -435,11 +456,32 @@
 						"0.4": {
 							"vector": [0, 0, -2]
 						},
+						"0.5": {
+							"vector": [0, -0.75, -1.6]
+						},
 						"0.9": {
 							"vector": [0, 0, 0]
 						},
 						"1.0": {
 							"vector": [0, 0, 2]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.3": {
+							"vector": [1, 1, 1]
+						},
+						"0.4": {
+							"vector": [0.9, 1.1, 0.9]
+						},
+						"0.5": {
+							"vector": [1.1, 0.9, 1.1],
+							"easing": "easeOutBack"
+						},
+						"0.9": {
+							"vector": [1, 1, 1]
 						}
 					}
 				},
@@ -491,7 +533,7 @@
 						}
 					}
 				},
-				"head": {
+				"main_head": {
 					"rotation": {
 						"0.0": {
 							"vector": [2.5, 0, 0]
@@ -537,7 +579,7 @@
 		},
 		"attack_1": {
 			"animation_length": 2,
-			"override_previous_animation": true,
+			"override_previous_animation": false,
 			"bones": {
 				"right arm": {
 					"rotation": {
@@ -884,7 +926,7 @@
 						"vector": [0, 0, 0]
 					}
 				},
-				"head": {
+				"main_head": {
 					"rotation": {
 						"vector": [0, 0, 0]
 					},
@@ -911,7 +953,7 @@
 			}
 		},
 		"icon": {
-			"loop": true,
+			"loop": false,
 			"bones": {
 				"right arm": {
 					"rotation": {
@@ -926,7 +968,7 @@
 						"vector": [2.5, 20, 0]
 					}
 				},
-				"head": {
+				"main_head": {
 					"rotation": {
 						"vector": [5, -20, 0]
 					}
@@ -939,7 +981,7 @@
 			}
 		},
 		"hold_idle": {
-			"loop": true,
+			"loop": false,
 			"animation_length": 1,
 			"override_previous_animation": true,
 			"bones": {
@@ -1004,7 +1046,7 @@
 						}
 					}
 				},
-				"head": {
+				"main_head": {
 					"rotation": {
 						"0.0": {
 							"vector": [-2.5, 0, 0]
@@ -1033,7 +1075,7 @@
 			}
 		},
 		"hold_walk": {
-			"loop": true,
+			"loop": false,
 			"animation_length": 1,
 			"bones": {
 				"right": {
@@ -1179,7 +1221,7 @@
 						}
 					}
 				},
-				"head": {
+				"main_head": {
 					"rotation": {
 						"0.0": {
 							"vector": [2.5, 0, 0]

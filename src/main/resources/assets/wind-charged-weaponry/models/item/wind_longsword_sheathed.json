@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "wind-charged-weaponry:item/wind_longsword_large"
+    "layer0": "wind-charged-weaponry:item/wind_longsword_sheathed"
   },
   "gui_light": "front",
   "display": {

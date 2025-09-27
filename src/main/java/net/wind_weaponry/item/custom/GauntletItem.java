@@ -1,9 +1,10 @@
 package net.wind_weaponry.item.custom;
 
-import net.minecraft.component.type.ItemEnchantmentsComponent;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageScaling;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageType;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.item.ToolItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.sound.SoundCategory;
@@ -20,22 +22,24 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.AdvancedExplosionBehavior;
+import net.wind_weaponry.enchantment.ModEnchantmentEffects;
 import net.wind_weaponry.enchantment.ModEnchantments;
+import net.wind_weaponry.util.Functions;
 
 import java.util.Optional;
 import java.util.function.Function;
 
-public class GaunletItem extends ToolItem {
+public class GauntletItem extends ToolItem {
     //public static final int TICKS_PER_SECOND = 20;
     public float variant = 0;
 
-    public GaunletItem(ToolMaterial toolMaterial, Item.Settings settings){
+    public GauntletItem(ToolMaterial toolMaterial, Item.Settings settings){
         super(toolMaterial, settings);
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
-        if (user.getStackInHand(hand).hasEnchantments())
+        if (user.getStackInHand(hand).getEnchantments().getEnchantments().contains(Functions.getEnchantmentEntry(world, ModEnchantments.BLAST_EFFECT)))
             variant = 1;
         else{
             variant = 0;
@@ -106,7 +110,7 @@ public class GaunletItem extends ToolItem {
                     user.getX() + (user.getRotationVector().x * 1),
                     user.getStandingEyeHeight() + user.getY() + (user.getRotationVector().y * 1),
                     user.getZ() + (user.getRotationVector().z * 1),
-                    1.7F,
+                    1.4F,
                     false,
                     World.ExplosionSourceType.TRIGGER,
                     ParticleTypes.GUST_EMITTER_SMALL,

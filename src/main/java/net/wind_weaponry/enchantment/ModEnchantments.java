@@ -21,6 +21,8 @@ public class ModEnchantments {
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(WindChargedWeaponry.MOD_ID, "gust"));
     public static final RegistryKey<Enchantment> BLAST_EFFECT =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(WindChargedWeaponry.MOD_ID, "blast"));
+    public static final RegistryKey<Enchantment> REAPING_EFFECT =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(WindChargedWeaponry.MOD_ID, "reaping"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -42,6 +44,18 @@ public class ModEnchantments {
 
         register(registerable, BLAST_EFFECT, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ModTags.Items.GAUNTLET_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
+                        3,
+                        1,
+                        Enchantment.leveledCost(5,7),
+                        Enchantment.leveledCost(25,9),
+                        2,
+                        AttributeModifierSlot.HAND))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
+                .addNonListEffect(EnchantmentEffectComponentTypes.TRIDENT_SPIN_ATTACK_STRENGTH, new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(1F, 0F))));
+
+        register(registerable, REAPING_EFFECT, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ModTags.Items.NEEDLE_ENCHANTABLE),
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                         3,
                         1,

@@ -11,7 +11,7 @@ public class WindChargedWeaponryDataGenerator implements DataGeneratorEntrypoint
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack  = fabricDataGenerator.createPack();
-
+		//pack.addProvider(ExampleProvider::new);
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModLootTableProvider::new);

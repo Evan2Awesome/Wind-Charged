@@ -1,5 +1,6 @@
-// 1.21.1	2025-06-21T17:52:58.5752351	Wind Charged Weaponry/Tags for minecraft:item
-8b65dd7ccf8d83f8a6c0486ac6a58dce9379e56b data\minecraft\tags\item\swords.json
+// 1.21.1	2025-09-26T17:03:12.6485809	Wind Charged Weaponry/Tags for minecraft:item
+01ce0f21ba5f819fe20f46e43444bc282b97a25e data\minecraft\tags\item\swords.json
 c09bf788a9ef2915bb14622e3af86c768dd7281d data\wind-charged-weaponry\tags\item\gauntlet_enchantable.json
-8b65dd7ccf8d83f8a6c0486ac6a58dce9379e56b data\minecraft\tags\item\enchantable\sword.json
+01ce0f21ba5f819fe20f46e43444bc282b97a25e data\minecraft\tags\item\enchantable\sword.json
 8b65dd7ccf8d83f8a6c0486ac6a58dce9379e56b data\wind-charged-weaponry\tags\item\longsword_enchantable.json
+01a92225ca03af43ae0fe38acd4490dcb8adec64 data\wind-charged-weaponry\tags\item\needle_enchantable.json
