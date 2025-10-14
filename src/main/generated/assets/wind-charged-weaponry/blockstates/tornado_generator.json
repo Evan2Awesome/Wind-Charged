@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "wind-charged-weaponry:block/tornado_generator"
+    }
+  }
+}
