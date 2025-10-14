@@ -16,7 +16,9 @@ import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.AdvancedExplosionBehavior;
 import net.wind_weaponry.compatability.NTRDealsItems;
+import net.wind_weaponry.enchantment.ModEnchantments;
 import net.wind_weaponry.item.ModItems;
+import net.wind_weaponry.util.Functions;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -39,7 +41,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
     @Inject(method = "disableShield*", at = @At("HEAD"))
     public void disableShield(CallbackInfo ci) {
         this.getItemCooldownManager().set(ModItems.WIND_LONGSWORD, NTRDealsItems.getSwordBreakTime(this));
-        if (this.getStackInHand(Hand.MAIN_HAND).isOf(ModItems.WIND_LONGSWORD)) {
+        if (this.getStackInHand(Hand.MAIN_HAND).isOf(ModItems.WIND_LONGSWORD) && this.getStackInHand(Hand.MAIN_HAND).getEnchantments().getEnchantments().contains(Functions.getEnchantmentEntry(this.getWorld(), ModEnchantments.GUST_EFFECT))) {
             this.getWorld().createExplosion(
                 this,
                         null,

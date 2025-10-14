@@ -47,7 +47,9 @@ public class NeedleItem extends SwordItem {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        user.setCurrentHand(hand);
+        if (getSilk(user.getStackInHand(hand)) >= 13){
+            user.setCurrentHand(hand);
+        }
         return super.use(world, user, hand);
     }
 
@@ -94,7 +96,7 @@ public class NeedleItem extends SwordItem {
 
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-        ((PlayerEntity) user).experienceLevel = getSilk(stack);
+        //((PlayerEntity) user).experienceLevel = getSilk(stack);
         if (getSilk(stack) >= 13) {
             user.setVelocity(0f, 0f, 0f);
             user.fallDistance = 0;
@@ -169,7 +171,7 @@ public class NeedleItem extends SwordItem {
 
         if (stack.getEnchantments().getEnchantments().contains(Functions.getEnchantmentEntry(world, ModEnchantments.REAPING_EFFECT))) { // THIS LINE RIGHT HERE THIS STUPID LINE IS BROKEN AAAAAAAAAAAAAHH
             component = component.with(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, 6F, EntityAttributeModifier.Operation.ADD_VALUE),
+                    new EntityAttributeModifier(Item.BASE_ATTACK_DAMAGE_MODIFIER_ID, 7F, EntityAttributeModifier.Operation.ADD_VALUE),
                     AttributeModifierSlot.MAINHAND);
             component = component.with(EntityAttributes.GENERIC_ATTACK_SPEED,
                     new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -2.6F, EntityAttributeModifier.Operation.ADD_VALUE),

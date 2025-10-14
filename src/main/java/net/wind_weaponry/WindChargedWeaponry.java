@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.util.Identifier;
+import net.wind_weaponry.block.ModBlocks;
 import net.wind_weaponry.enchantment.ModEnchantmentEffects;
 import net.wind_weaponry.enchantment.ModEnchantments;
 import net.wind_weaponry.entity.ModEntities;
@@ -33,6 +34,7 @@ public class WindChargedWeaponry implements ModInitializer {
 		ModEntities.registerModEntities();
 		ModEnchantmentEffects.registerEnchantmentEffects();
 		ModDataComponents.register();
+		ModBlocks.registerModBlocks();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.WIND_GOLEM_ENTITY_ENTITY_TYPE, WindGolemEntity.createAttributes());
 	}

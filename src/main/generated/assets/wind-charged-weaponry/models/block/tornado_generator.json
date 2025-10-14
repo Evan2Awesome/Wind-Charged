@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "wind-charged-weaponry:block/tornado_generator_bottom",
+    "east": "wind-charged-weaponry:block/tornado_generator_side",
+    "north": "wind-charged-weaponry:block/tornado_generator_side",
+    "particle": "wind-charged-weaponry:block/tornado_generator_side",
+    "south": "wind-charged-weaponry:block/tornado_generator_side",
+    "up": "wind-charged-weaponry:block/tornado_generator_top",
+    "west": "wind-charged-weaponry:block/tornado_generator_side"
+  }
+}

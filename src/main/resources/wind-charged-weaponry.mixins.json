@@ -3,10 +3,7 @@
   "package": "net.wind_weaponry.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExampleMixin",
-    "ItemRendererMixin",
     "LivingEntityMixin",
-    "ModelLoaderMixin",
     "PlayerEntityMixin"
   ],
   "injectors": {
@@ -14,6 +11,7 @@
   },
   "client": [
     "BipedEntityModelMixin",
-    "ItemRendererMixin"
-	]
+    "ItemRendererMixin",
+    "ModelLoaderMixin"
+  ]
 }

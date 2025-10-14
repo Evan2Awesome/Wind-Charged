@@ -1,6 +1,7 @@
 package net.wind_weaponry;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.wind_weaponry.block.ModBlocks;
 import net.wind_weaponry.item.ModItems;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,7 @@ public class ModGroup {
                         entries.add(ModItems.WIND_LONGSWORD);
                         entries.add(ModItems.WIND_GAUNTLET);
                         entries.add(ModItems.NEEDLE);
+                        entries.add(ModBlocks.TORNADO_GENERATOR);
                     })
                     .build());
 

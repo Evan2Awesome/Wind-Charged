@@ -3,6 +3,7 @@ package net.wind_weaponry.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 //import net.wind_weaponry.block.ModBlocks;
+import net.wind_weaponry.block.ModBlocks;
 import net.wind_weaponry.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -16,7 +17,7 @@ public class ModModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         //blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.EXAMPLE_BLOCK);
-
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.TORNADO_GENERATOR);
     }
 
     @Override

@@ -43,7 +43,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
-	modCompileOnly "maven.modrinth:ntrdeals-items:${project.ntrdeals_items_version}"
+	modCompileOnly "maven.modrinth:ntrdeals-items:${project.ntrdeals_items_version}+fabric"
 }
 
 processResources {

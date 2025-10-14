@@ -149,7 +149,7 @@ public class LongswordItem extends SwordItem{
                         AttributeModifierSlot.MAINHAND);
             }
             component = component.with(EntityAttributes.GENERIC_ATTACK_SPEED,
-                    new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -2.6F, EntityAttributeModifier.Operation.ADD_VALUE),
+                    new EntityAttributeModifier(Item.BASE_ATTACK_SPEED_MODIFIER_ID, -2.5F, EntityAttributeModifier.Operation.ADD_VALUE),
                     AttributeModifierSlot.MAINHAND);
             component = component.with(EntityAttributes.PLAYER_ENTITY_INTERACTION_RANGE,
                     new EntityAttributeModifier(Identifier.of("2906341806710"), 0.5F, EntityAttributeModifier.Operation.ADD_VALUE),

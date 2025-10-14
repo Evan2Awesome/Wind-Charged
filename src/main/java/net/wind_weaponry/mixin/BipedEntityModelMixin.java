@@ -87,7 +87,7 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
                 this.leftArm.yaw = -0.05F;
                 this.leftArm.pitch = 0.6F;
                 this.leftArm.roll = -0.25F;
-            } else if (!livingEntity.isBlocking() && livingEntity.isUsingItem() && (livingEntity.getMainHandStack().getItem() instanceof LongswordItem)) {//use item with sword in main hand
+            } else if (!livingEntity.isBlocking() && livingEntity.isUsingItem() && (livingEntity.getMainHandStack().getItem() instanceof LongswordItem || livingEntity.getMainHandStack().getItem() instanceof NeedleItem)) {//use item with sword in main hand
                 this.rightArm.yaw = 0.05F;
                 this.rightArm.pitch = 0.6F;
                 this.rightArm.roll = 0.25F;

@@ -3,7 +3,7 @@ package net.wind_weaponry.compatability;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.ntrdeal.ntrdeals_items.attribute.ModAttributes;
+import net.ntrdeal.ntrdeals_items.entity.ModAttributes;
 
 public class NTRDealsItems {
     public static boolean NTRDEALS_ITEMS = FabricLoader.getInstance().isModLoaded("ntrdeals-items");
