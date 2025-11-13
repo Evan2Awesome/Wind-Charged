@@ -13,6 +13,7 @@
   "tooltip.wind-charged-weaponry.longsword.ctrl_up" : "Press §e[Ctrl]§r for functionality!",
   "tooltip.wind-charged-weaponry.needle.shift_down": "A slender, sharp weapon from a distant land. Gathers silk upon striking an enemy.",
   "tooltip.wind-charged-weaponry.needle.ctrl_down": "When at full silk, hold §eRight Click§r to heal.",
+  "tooltip.wind-charged-weaponry.needle.ctrl_down_thread_storm": "When at half silk or more, hold §eRight Click§r to use a thread storm.",
 
   "enchantment.wind-charged-weaponry.gust": "Gust",
   "enchantment.wind-charged-weaponry.gust.desc": "Launches attacked mobs.",
@@ -21,5 +22,8 @@
   "enchantment.wind-charged-weaponry.blast.desc": "For the truly insane. Replaces the safe, sensible burst of wind with a powerful explosion that launches further at the cost of being much more volatile.",
 
   "enchantment.wind-charged-weaponry.reaping": "Reaping",
-  "enchantment.wind-charged-weaponry.reaping.desc": "Increases damage and silk yield at the expense of speed."
+  "enchantment.wind-charged-weaponry.reaping.desc": "Increases damage and silk yield at the expense of speed.",
+
+  "enchantment.wind-charged-weaponry.thread_storm": "Thread Storm",
+  "enchantment.wind-charged-weaponry.thread_storm.desc": "Replaces the ability to heal with a large attack that damages everything around its user."
 }

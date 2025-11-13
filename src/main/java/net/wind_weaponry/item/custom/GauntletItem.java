@@ -1,5 +1,6 @@
 package net.wind_weaponry.item.custom;
 
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageScaling;
 import net.minecraft.entity.damage.DamageSource;
@@ -51,6 +52,7 @@ public class GauntletItem extends ToolItem {
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         PlayerEntity temp = (PlayerEntity) user;
+        stack.damage(4, user, EquipmentSlot.MAINHAND);
         if (variant == 0) temp.getItemCooldownManager().set(this, 30);
         else {
             temp.getItemCooldownManager().set(this, 60);

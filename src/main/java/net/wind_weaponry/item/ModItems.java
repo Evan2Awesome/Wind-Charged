@@ -38,6 +38,7 @@ public class ModItems {
                     new AttributeModifiersComponent.Entry(EntityAttributes.GENERIC_ARMOR, new EntityAttributeModifier(
                             Identifier.of("71083750128"),1F, EntityAttributeModifier.Operation.ADD_VALUE
                     ), AttributeModifierSlot.HAND)),true))
+            .maxDamage(240)
             .maxCount(1)));
 
     public static final Item WIND_LONGSWORD = registerItem("wind_longsword", new LongswordItem(ModToolMaterials.WIND_CHARGED, new Item.Settings()

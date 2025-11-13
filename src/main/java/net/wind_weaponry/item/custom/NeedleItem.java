@@ -4,8 +4,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.component.type.AttributeModifiersComponent;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -18,25 +16,16 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
+import net.minecraft.util.*;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
-import net.wind_weaponry.WindChargedWeaponry;
-import net.wind_weaponry.enchantment.ModEnchantmentEffects;
 import net.wind_weaponry.enchantment.ModEnchantments;
-import net.wind_weaponry.enchantment.custom.ReapingEnchantmentEffect;
 import net.wind_weaponry.item.component.ModDataComponents;
 import net.wind_weaponry.util.Functions;
-import net.wind_weaponry.util.ModTags;
 
 import java.util.List;
 
@@ -49,6 +38,8 @@ public class NeedleItem extends SwordItem {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         if (getSilk(user.getStackInHand(hand)) >= 13){
             user.setCurrentHand(hand);
+        }else if (getSilk(user.getStackInHand(hand)) >= 6 && hasThreadStorm(user.getStackInHand(hand))){
+            user.setCurrentHand(hand);
         }
         return super.use(world, user, hand);
     }
@@ -56,6 +47,12 @@ public class NeedleItem extends SwordItem {
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
         PlayerEntity temp = (PlayerEntity) user;
+        if (hasThreadStorm(stack)) {
+            setSilk(stack, getSilk(stack)-6);
+            if (getSilk(stack) < 0) {
+                setSilk(stack, 0);
+            }
+        }
         temp.getItemCooldownManager().set(stack.getItem(), 20);
         super.onStoppedUsing(stack, world, user, remainingUseTicks);
     }
@@ -67,29 +64,53 @@ public class NeedleItem extends SwordItem {
 
     @Override
     public int getMaxUseTime(ItemStack stack, LivingEntity user) {
-        if (getSilk(stack) >= 13) {
-            return 20;
+        if (hasThreadStorm(stack)){
+            if (getSilk(stack) >= 6) {
+                return 30;
+            }
         }else {
-            return 72000;
+            if (getSilk(stack) >= 13) {
+                return 30;
+            }
         }
+        return 72000;
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         PlayerEntity temp = (PlayerEntity) user;
-        if (getSilk(stack) >= 13) {
-            setSilk(stack, 0);
-            user.heal(10);
-            temp.getItemCooldownManager().set(stack.getItem(), 300);
-            user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
-                    SoundEvents.ENTITY_BREEZE_DEFLECT, SoundCategory.PLAYERS, 2.0f, 1.0f);
-            user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
-                    SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.PLAYERS, 1f, 0.8f);
-            for (int i=0;i<16;i++) {
-                world.addParticle(ParticleTypes.END_ROD, user.getX() + (world.random.nextBetween(-2, 2)), user.getY() + (world.random.nextBetweenExclusive(-2, 2)) + 1.0, user.getZ() + (world.random.nextBetweenExclusive(-2, 2)), 0.0, 0.1, 0.0);
+        if (!hasThreadStorm(stack)) {
+            if (getSilk(stack) >= 13) {
+                setSilk(stack, 0);
+                user.heal(10);
+                temp.getItemCooldownManager().set(stack.getItem(), 300);
+                user.getWorld().playSound(null, user.getX(), user.getY(), user.getZ(),
+                        SoundEvents.ENTITY_BREEZE_DEFLECT, SoundCategory.PLAYERS, 2.0f, 1.0f);
+                user.getWorld().playSound(null, user.getX(), user.getY(), user.getZ(),
+                        SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.PLAYERS, 1f, 0.8f);
+                for (int i = 0; i < 16; i++) {
+                    world.addParticle(ParticleTypes.END_ROD, user.getX() + (world.random.nextBetween(-2, 2)), user.getY() + (world.random.nextBetweenExclusive(-2, 2)) + 1.0, user.getZ() + (world.random.nextBetweenExclusive(-2, 2)), 0.0, 0.1, 0.0);
+                }
+            } else {
+                temp.getItemCooldownManager().set(stack.getItem(), 20);
             }
-        } else {
-            temp.getItemCooldownManager().set(stack.getItem(), 20);
+        }else{
+            if (getSilk(stack) >= 6) {
+                setSilk(stack, getSilk(stack)-6);
+                if (getSilk(stack) < 0) {
+                    setSilk(stack, 0);
+                }
+                temp.getItemCooldownManager().set(stack.getItem(), 200);
+                user.getWorld().playSound(null, user.getX(), user.getY(), user.getZ(),
+                        SoundEvents.ENTITY_BREEZE_DEFLECT, SoundCategory.PLAYERS, 2.0f, 1.0f);
+                user.getWorld().playSound(null, user.getX(), user.getY(), user.getZ(),
+                        SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.PLAYERS, 1f, 0.8f);
+                for (int i = 0; i < 16; i++) {
+                    world.addParticle(ParticleTypes.END_ROD, user.getX() + (world.random.nextBetween(-2, 2)), user.getY() + (world.random.nextBetweenExclusive(-2, 2)) + 1.0, user.getZ() + (world.random.nextBetweenExclusive(-2, 2)), 0.0, 0.1, 0.0);
+                }
+            } else {
+                temp.getItemCooldownManager().set(stack.getItem(), 20);
+            }
         }
         return super.finishUsing(stack, world, user);
     }
@@ -97,13 +118,39 @@ public class NeedleItem extends SwordItem {
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         //((PlayerEntity) user).experienceLevel = getSilk(stack);
-        if (getSilk(stack) >= 13) {
-            user.setVelocity(0f, 0f, 0f);
-            user.fallDistance = 0;
 
-            user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
-                    SoundEvents.ENTITY_BREEZE_CHARGE, SoundCategory.PLAYERS, 0.5f, 1.0f);
-            world.addParticle(ParticleTypes.SMALL_GUST, user.getX() + ((double) world.random.nextBetweenExclusive(-10, 10) / 10), user.getY() + ((double) world.random.nextBetweenExclusive(-0, 20) / 10), user.getZ() + ((double) world.random.nextBetweenExclusive(-10, 10) / 10), 0.0, 0.0, 0.0);
+        if (hasThreadStorm(stack)){
+            if (getSilk(stack) >= 6) {
+                user.setVelocity(0f, 0f, 0f);
+                user.fallDistance = 0;
+
+                user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
+                        SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.PLAYERS, 0.5f, 1.0f);
+                world.addParticle(ParticleTypes.SWEEP_ATTACK, user.getX() + ((double) world.random.nextBetweenExclusive(-20, 20) / 10), user.getY() + ((double) world.random.nextBetweenExclusive(-10, 30) / 10), user.getZ() + ((double) world.random.nextBetweenExclusive(-20, 20) / 10), 0.0, 0.0, 0.0);
+                world.addParticle(ParticleTypes.SWEEP_ATTACK, user.getX() + ((double) world.random.nextBetweenExclusive(-20, 20) / 10), user.getY() + ((double) world.random.nextBetweenExclusive(-10, 30) / 10), user.getZ() + ((double) world.random.nextBetweenExclusive(-20, 20) / 10), 0.0, 0.0, 0.0);
+
+                float damage = Math.round(((30f/remainingUseTicks)/6) + 2);
+
+                int range = 3;
+                List<LivingEntity> entities = world.getEntitiesByType(TypeFilter.instanceOf(LivingEntity.class),new Box(user.getX()-range,user.getY()-range,user.getZ()-range,user.getX()+range,user.getY()+range,user.getZ()+range), LivingEntity::isAlive);
+                for (int i = 0; i < entities.size(); i++) {
+                    if (entities.get(i).equals(user)) {
+                        continue;
+                    }
+                    entities.get(i).damage(user.getDamageSources().playerAttack((PlayerEntity)user), damage);
+                    entities.get(i).setVelocity(0,0.05,0);
+                    entities.get(i).fallDistance = 0;
+                }
+            }
+        }else{
+            if (getSilk(stack) >= 13) {
+                user.setVelocity(0f, 0f, 0f);
+                user.fallDistance = 0;
+
+                user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
+                        SoundEvents.ENTITY_BREEZE_CHARGE, SoundCategory.PLAYERS, 0.5f, 1.0f);
+                world.addParticle(ParticleTypes.SMALL_GUST, user.getX() + ((double) world.random.nextBetweenExclusive(-10, 10) / 10), user.getY() + ((double) world.random.nextBetweenExclusive(-0, 20) / 10), user.getZ() + ((double) world.random.nextBetweenExclusive(-10, 10) / 10), 0.0, 0.0, 0.0);
+            }
         }
 
         super.usageTick(world, user, stack, remainingUseTicks);
@@ -117,7 +164,11 @@ public class NeedleItem extends SwordItem {
             tooltip.add(Text.translatable("tooltip.wind-charged-weaponry.longsword.shift_up"));
         }
         if(Screen.hasControlDown()){
-            tooltip.add(Text.translatable("tooltip.wind-charged-weaponry.needle.ctrl_down"));
+            if (hasThreadStorm(stack)) {
+                tooltip.add(Text.translatable("tooltip.wind-charged-weaponry.needle.ctrl_down_thread_storm"));
+            }else{
+                tooltip.add(Text.translatable("tooltip.wind-charged-weaponry.needle.ctrl_down"));
+            }
         }else{
             tooltip.add(Text.translatable("tooltip.wind-charged-weaponry.longsword.ctrl_up"));
         }
@@ -148,11 +199,23 @@ public class NeedleItem extends SwordItem {
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        if (getSilk(stack) == 13){
-            return 0xffffff;
+        if (hasThreadStorm(stack)) {
+            if (getSilk(stack) >= 6) {
+                return 0xffffff;
+            } else {
+                return 0xa2a2a2;
+            }
         } else {
-            return 0xa2a2a2;
+            if (getSilk(stack) == 13) {
+                return 0xffffff;
+            } else {
+                return 0xa2a2a2;
+            }
         }
+    }
+
+    public boolean hasThreadStorm(ItemStack stack) {
+        return stack.getOrDefault(ModDataComponents.THREAD_STORM_COMPONENT, false);
     }
 
     public int getSilk(ItemStack stack) {
@@ -165,6 +228,12 @@ public class NeedleItem extends SwordItem {
 
     @Override
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
+        if (stack.getEnchantments().getEnchantments().contains(Functions.getEnchantmentEntry(world, ModEnchantments.THREAD_STORM_EFFECT))) {
+            stack.set(ModDataComponents.THREAD_STORM_COMPONENT, true);
+        }else{
+            stack.set(ModDataComponents.THREAD_STORM_COMPONENT, false);
+        }
+
         AttributeModifiersComponent component = stack.getOrDefault(DataComponentTypes.ATTRIBUTE_MODIFIERS,
                 stack.getItem().getComponents().getOrDefault(DataComponentTypes.ATTRIBUTE_MODIFIERS,
                         AttributeModifiersComponent.DEFAULT));

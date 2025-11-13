@@ -28,6 +28,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.NEEDLE)
                 .add(ModItems.WIND_LONGSWORD);
 
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ModItems.WIND_GAUNTLET);
+
         getOrCreateTagBuilder(ModTags.Items.LONGSWORD_ENCHANTABLE)
                 .add(ModItems.WIND_LONGSWORD);
 

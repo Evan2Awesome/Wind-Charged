@@ -1,6 +1,9 @@
 {
   "replace": false,
   "values": [
-    "wind-charged-weaponry:gust_effect"
+    "wind-charged-weaponry:gust",
+    "wind-charged-weaponry:blast",
+    "wind-charged-weaponry:thread_storm",
+    "wind-charged-weaponry:reaping"
   ]
 }

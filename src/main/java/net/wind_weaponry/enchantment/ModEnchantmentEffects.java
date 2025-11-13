@@ -10,6 +10,7 @@ import net.wind_weaponry.WindChargedWeaponry;
 import net.wind_weaponry.enchantment.custom.BlastEnchantmentEffect;
 import net.wind_weaponry.enchantment.custom.GustEnchantmentEffect;
 import net.wind_weaponry.enchantment.custom.ReapingEnchantmentEffect;
+import net.wind_weaponry.enchantment.custom.ThreadStormEnchantmentEffect;
 
 public class ModEnchantmentEffects {
     public static final MapCodec<? extends EnchantmentEntityEffect> GUST_EFFECT =
@@ -18,6 +19,8 @@ public class ModEnchantmentEffects {
             registerValueEffect("blast", BlastEnchantmentEffect.CODEC);
     public static final MapCodec<? extends EnchantmentValueEffect> REAPING_EFFECT =
             registerValueEffect("reaping", ReapingEnchantmentEffect.CODEC);
+    public static final MapCodec<? extends EnchantmentValueEffect> THREAD_STORM_EFFECT =
+            registerValueEffect("thread_storm", ThreadStormEnchantmentEffect.CODEC);
 
     private static MapCodec<? extends EnchantmentEntityEffect> registerEntityEffect(String name, MapCodec<? extends EnchantmentEntityEffect> codec){
         return Registry.register(Registries.ENCHANTMENT_ENTITY_EFFECT_TYPE, Identifier.of(WindChargedWeaponry.MOD_ID,name), codec);

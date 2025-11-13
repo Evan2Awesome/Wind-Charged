@@ -23,6 +23,8 @@ public class ModEnchantments {
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(WindChargedWeaponry.MOD_ID, "blast"));
     public static final RegistryKey<Enchantment> REAPING_EFFECT =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(WindChargedWeaponry.MOD_ID, "reaping"));
+    public static final RegistryKey<Enchantment> THREAD_STORM_EFFECT =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(WindChargedWeaponry.MOD_ID, "thread_storm"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -31,7 +33,7 @@ public class ModEnchantments {
         register(registerable, GUST_EFFECT, Enchantment.builder(Enchantment.definition(
                 items.getOrThrow(ModTags.Items.LONGSWORD_ENCHANTABLE),
                 items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                3,
+                20,
                 1,
                 Enchantment.leveledCost(5,7),
                 Enchantment.leveledCost(25,9),
@@ -44,8 +46,7 @@ public class ModEnchantments {
 
         register(registerable, BLAST_EFFECT, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ModTags.Items.GAUNTLET_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        3,
+                        25,
                         1,
                         Enchantment.leveledCost(5,7),
                         Enchantment.leveledCost(25,9),
@@ -57,7 +58,19 @@ public class ModEnchantments {
         register(registerable, REAPING_EFFECT, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ModTags.Items.NEEDLE_ENCHANTABLE),
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        3,
+                        22,
+                        1,
+                        Enchantment.leveledCost(5,7),
+                        Enchantment.leveledCost(25,9),
+                        2,
+                        AttributeModifierSlot.HAND))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET))
+                .addNonListEffect(EnchantmentEffectComponentTypes.TRIDENT_SPIN_ATTACK_STRENGTH, new AddEnchantmentEffect(EnchantmentLevelBasedValue.linear(1F, 0F))));
+
+        register(registerable, THREAD_STORM_EFFECT, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ModTags.Items.NEEDLE_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
+                        18,
                         1,
                         Enchantment.leveledCost(5,7),
                         Enchantment.leveledCost(25,9),

@@ -1,7 +1,7 @@
 {
   "anvil_cost": 2,
   "description": {
-    "translate": "enchantment.wind-charged-weaponry.blast"
+    "translate": "enchantment.wind-charged-weaponry.thread_storm"
   },
   "effects": {
     "minecraft:trident_spin_attack_strength": {
@@ -23,9 +23,10 @@
     "base": 5,
     "per_level_above_first": 7
   },
+  "primary_items": "#minecraft:enchantable/weapon",
   "slots": [
     "hand"
   ],
-  "supported_items": "#wind-charged-weaponry:gauntlet_enchantable",
-  "weight": 25
+  "supported_items": "#wind-charged-weaponry:needle_enchantable",
+  "weight": 18
 }
