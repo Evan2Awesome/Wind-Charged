@@ -1,0 +1,63 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "wind-charged-weaponry:item/wind_gauntlet_buster_3d_idle",
+		"particle": "wind-charged-weaponry:item/wind_gauntlet_buster_3d_idle"
+	},
+	"elements": [
+		{
+			"from": [5.6, 3.575, 7.55],
+			"to": [10.5, 8.475, 14.45],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.05, 6.025, 11]},
+			"faces": {
+				"north": {"uv": [0, 8, 4, 12], "texture": "#0"},
+				"east": {"uv": [0, 0, 6, 4], "texture": "#0"},
+				"south": {"uv": [10, 0, 14, 4], "texture": "#0"},
+				"west": {"uv": [0, 4, 6, 8], "texture": "#0"},
+				"up": {"uv": [10, 6, 6, 0], "texture": "#0"},
+				"down": {"uv": [10, 6, 6, 12], "texture": "#0"}
+			}
+		}
+	],
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 0, -90],
+			"translation": [2, -2, 0]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [0, 0, -90],
+			"translation": [2, -2, 0]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 0, -90],
+			"translation": [0, 1, -0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 0, -90],
+			"translation": [1.5, 0, -1.75]
+		},
+		"ground": {
+			"translation": [0, 0, -2.75]
+		},
+		"gui": {
+			"rotation": [30, -45, 0],
+			"translation": [-3.25, -4, 0],
+			"scale": [1.5, -1.5, -1.5]
+		},
+		"fixed": {
+			"rotation": [-90, -90, 0],
+			"translation": [6, 0, 0],
+			"scale": [2, 2, 2]
+		}
+	},
+	"groups": [
+		{
+			"name": "main",
+			"origin": [8, 6, 11],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

@@ -22,6 +22,7 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.wind_weaponry.item.component.ModDataComponents;
 import net.wind_weaponry.item.custom.LongswordItem;
 import net.wind_weaponry.item.custom.NeedleItem;
 import org.jetbrains.annotations.Nullable;
@@ -38,6 +39,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ItemRenderer.class)
 public abstract class ItemRendererMixin {
 
+    private String busterName = "plasma power";
+    private String masterSwordName = "well excuse me";
+
     @Shadow
     @Final
     private ItemModels models;
@@ -52,12 +56,18 @@ public abstract class ItemRendererMixin {
     )
     public BakedModel renderItem(BakedModel bakedModel, @Local(argsOnly = true) ItemStack stack, @Local(argsOnly = true) ModelTransformationMode renderMode) {
         if (stack.getItem() == ModItems.WIND_LONGSWORD && (renderMode == ModelTransformationMode.GUI || renderMode == ModelTransformationMode.GROUND || renderMode == ModelTransformationMode.FIXED)) {
+            if (stack.getName().getString().toLowerCase().contains(masterSwordName))
+                return getModels().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("master_longsword")));
             return getModels().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_longsword")));
         }
         if (stack.getItem() == ModItems.WIND_LONGSWORD && (renderMode == ModelTransformationMode.HEAD)) {
+            if (stack.getName().getString().toLowerCase().contains(masterSwordName))
+                return getModels().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("master_longsword_sheathed")));
             return getModels().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_longsword_sheathed")));
         }
         if (stack.getItem() == ModItems.WIND_GAUNTLET && (renderMode == ModelTransformationMode.GUI || renderMode == ModelTransformationMode.GROUND || renderMode == ModelTransformationMode.FIXED)) {
+            if (stack.getName().getString().toLowerCase().contains(busterName))
+                return getModels().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_gauntlet_buster")));
             return getModels().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_gauntlet")));
         }
         if (stack.getItem() == ModItems.NEEDLE && (renderMode == ModelTransformationMode.GUI || renderMode == ModelTransformationMode.GROUND || renderMode == ModelTransformationMode.FIXED)) {
@@ -73,10 +83,18 @@ public abstract class ItemRendererMixin {
     )
     public BakedModel getHeldItemModelMixin(BakedModel bakedModel, @Local(argsOnly = true) ItemStack stack) {
         if (stack.getItem() == ModItems.WIND_LONGSWORD) {
+            if (stack.getName().getString().toLowerCase().contains(masterSwordName))
+                return this.models.getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("master_longsword_large")));
             return this.models.getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_longsword_large")));
         }
         if (stack.getItem() == ModItems.WIND_GAUNTLET) {
-            return this.models.getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_gauntlet_3d")));
+            if (stack.getName().getString().toLowerCase().contains(busterName))
+                if (stack.getComponents().getOrDefault(ModDataComponents.GAUNTLET_USE_COMPONENT, false).equals(true))
+                    return this.models.getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_gauntlet_buster_3d")));
+                else
+                    return this.models.getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_gauntlet_buster_3d_idle")));
+            else
+                return this.models.getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("wind_gauntlet_3d")));
         }
         if (stack.getItem() == ModItems.NEEDLE) {
             return this.models.getModelManager().getModel(ModelIdentifier.ofInventoryVariant(WindChargedWeaponry.id("needle_large")));

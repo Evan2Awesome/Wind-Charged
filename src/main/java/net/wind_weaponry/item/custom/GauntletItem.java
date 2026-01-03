@@ -25,40 +25,44 @@ import net.minecraft.world.World;
 import net.minecraft.world.explosion.AdvancedExplosionBehavior;
 import net.wind_weaponry.enchantment.ModEnchantmentEffects;
 import net.wind_weaponry.enchantment.ModEnchantments;
+import net.wind_weaponry.item.component.ModDataComponents;
+import net.wind_weaponry.particle.ModParticles;
 import net.wind_weaponry.util.Functions;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.function.Function;
 
 public class GauntletItem extends ToolItem {
     //public static final int TICKS_PER_SECOND = 20;
-    public float variant = 0;
 
     public GauntletItem(ToolMaterial toolMaterial, Item.Settings settings){
         super(toolMaterial, settings);
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand){
-        if (user.getStackInHand(hand).getEnchantments().getEnchantments().contains(Functions.getEnchantmentEntry(world, ModEnchantments.BLAST_EFFECT)))
-            variant = 1;
-        else{
-            variant = 0;
-        }
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         user.setCurrentHand(hand);
         return TypedActionResult.consume(user.getStackInHand(hand));
     }
 
     @Override
+    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        stack.set(ModDataComponents.GAUNTLET_USE_COMPONENT, false);
+        return super.finishUsing(stack, world, user);
+    }
+
+    @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        stack.set(ModDataComponents.GAUNTLET_USE_COMPONENT, false);
         PlayerEntity temp = (PlayerEntity) user;
         stack.damage(4, user, EquipmentSlot.MAINHAND);
-        if (variant == 0) temp.getItemCooldownManager().set(this, 30);
+        if (!user.getStackInHand(user.getActiveHand()).getEnchantments().getEnchantments().contains(Functions.getEnchantmentEntry(world, ModEnchantments.BLAST_EFFECT))) temp.getItemCooldownManager().set(this, 30);
         else {
             temp.getItemCooldownManager().set(this, 60);
         }
 
-        if (variant == 0){
+        if (!user.getStackInHand(user.getActiveHand()).getEnchantments().getEnchantments().contains(Functions.getEnchantmentEntry(world, ModEnchantments.BLAST_EFFECT))){
             if (remainingUseTicks <= 71980){
                 if (user.isSneaking())
                     world.createExplosion(
@@ -143,6 +147,20 @@ public class GauntletItem extends ToolItem {
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
         //((PlayerEntity) user).experienceLevel = remainingUseTicks;
+        Random rand = new Random();
+        if (stack.getName().getString().toLowerCase().contains("plasma power")) {
+            double xModifier = ((world.random.nextBetweenExclusive(-1,2)));
+            double zModifier = ((world.random.nextBetweenExclusive(-1,2)));
+
+            if (xModifier != 0 && zModifier != 0){
+                xModifier = xModifier / 1.4;
+                zModifier = zModifier / 1.4;
+            }
+
+            world.addParticle(ModParticles.BUSTER_CHARGING_PARTICLE, (user.getX() + xModifier), user.getY(), (user.getZ() + zModifier), 0, 0.1, 0);
+        }
+
+        stack.set(ModDataComponents.GAUNTLET_USE_COMPONENT, true);
         if (remainingUseTicks == 71991) {
             user.getWorld().playSound(null, user.getX(),user.getY(),user.getZ(),
                     SoundEvents.BLOCK_COPPER_BULB_PLACE, SoundCategory.PLAYERS, 1.3f, 1.7f);

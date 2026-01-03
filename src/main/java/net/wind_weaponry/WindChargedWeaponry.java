@@ -11,6 +11,7 @@ import net.wind_weaponry.entity.ModEntities;
 import net.wind_weaponry.entity.custom.WindGolemEntity;
 import net.wind_weaponry.item.ModItems;
 import net.wind_weaponry.item.component.ModDataComponents;
+import net.wind_weaponry.particle.ModParticles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +36,7 @@ public class WindChargedWeaponry implements ModInitializer {
 		ModEnchantmentEffects.registerEnchantmentEffects();
 		ModDataComponents.register();
 		ModBlocks.registerModBlocks();
+		ModParticles.registerParticles();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.WIND_GOLEM_ENTITY_ENTITY_TYPE, WindGolemEntity.createAttributes());
 	}

@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 public record ReapingEnchantmentEffect(EnchantmentLevelBasedValue value) implements EnchantmentValueEffect {
     public static final MapCodec<ReapingEnchantmentEffect> CODEC = RecordCodecBuilder.mapCodec((instance) ->
             instance.group(EnchantmentLevelBasedValue.CODEC.fieldOf("value").forGetter(ReapingEnchantmentEffect::value)).apply(instance, ReapingEnchantmentEffect::new));
+
     /*
     @Override
     public boolean isCompatibleWith(Enchantment other) {

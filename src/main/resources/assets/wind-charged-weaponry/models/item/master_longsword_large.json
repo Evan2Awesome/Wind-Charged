@@ -1,0 +1,141 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "wind-charged-weaponry:item/master_longsword_large"
+  },
+  "gui_light": "front",
+  "display": {
+    "ground": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "head": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        5,
+        0
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        1.7
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        45,
+        90,
+        0
+      ],
+      "translation": [
+        0,
+        9.5,
+        1.5
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        1.7
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        -15,
+        -90,
+        25
+      ],
+      "translation": [
+        1.13,
+        4,
+        1.13
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        -15,
+        90,
+        -25
+      ],
+      "translation": [
+        1.13,
+        4,
+        1.13
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        -45,
+        90,
+        0
+      ],
+      "translation": [
+        0,
+        10,
+        1.5
+      ],
+      "scale": [
+        1.7,
+        1.7,
+        1.7
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    "gui": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "overrides": []
+}

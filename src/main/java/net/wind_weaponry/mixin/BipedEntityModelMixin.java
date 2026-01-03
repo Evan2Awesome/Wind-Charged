@@ -2,7 +2,10 @@ package net.wind_weaponry.mixin;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.item.Items;
+import net.minecraft.item.MinecartItem;
 import net.minecraft.resource.featuretoggle.FeatureSet;
+import net.minecraft.util.Arm;
 import net.minecraft.util.Hand;
 import net.wind_weaponry.item.ModItems;
 import net.wind_weaponry.item.custom.NeedleItem;
@@ -91,6 +94,24 @@ public abstract class BipedEntityModelMixin<T extends LivingEntity> extends Anim
                 this.rightArm.yaw = 0.05F;
                 this.rightArm.pitch = 0.6F;
                 this.rightArm.roll = 0.25F;
+            }
+        }
+        if (livingEntity.getMainHandStack().getItem() instanceof MinecartItem){
+            if (livingEntity.getMainArm().equals(Arm.RIGHT)) {
+                this.rightArm.yaw = -0.1F + this.head.yaw;
+                this.rightArm.pitch = (float) (-Math.PI / 2) + this.head.pitch;
+            }else {
+                this.leftArm.yaw = 0.1F + this.head.yaw;
+                this.leftArm.pitch = (float) (-Math.PI / 2) + this.head.pitch;
+            }
+            if (livingEntity.getOffHandStack().getItem() instanceof MinecartItem){
+                if (livingEntity.getMainArm().equals(Arm.RIGHT)) {
+                    this.leftArm.yaw = 0.1F + this.head.yaw;
+                    this.leftArm.pitch = (float) (-Math.PI / 2) + this.head.pitch;
+                }else {
+                    this.rightArm.yaw = -0.1F + this.head.yaw;
+                    this.rightArm.pitch = (float) (-Math.PI / 2) + this.head.pitch;
+                }
             }
         }
     }
